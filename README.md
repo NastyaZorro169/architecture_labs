@@ -1,1 +1,2 @@
-# architecture_labs
+Архитектуры 
+2 и 3 лр
