@@ -1,0 +1,14 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+' Компоненты и их взаимодействия
+Rel([Browser], [Web Application], "Accesses")
+Rel([Web Application], [User Service], "API Calls")
+Rel([Web Application], [Order Service], "API Calls")
+Rel([Web Application], [Service Service], "API Calls")
+
+Rel([User Service], [Database], "Reads/Writes to", "Users Table")
+Rel([Order Service], [Database], "Reads/Writes to", "Orders Table")
+Rel([Service Service], [Database], "Reads/Writes to", "Services Table")
+
+@enduml
