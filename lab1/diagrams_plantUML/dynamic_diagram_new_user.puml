@@ -1,0 +1,13 @@
+@startuml
+actor User
+boundary WebApp as WA
+control UserService as US
+entity Database as DB
+
+User -> WA : Register New User
+WA -> US : Create User
+US -> DB : Insert User Record
+DB -> US : User Created
+US -> WA : User Created
+WA -> User : User Created
+@enduml

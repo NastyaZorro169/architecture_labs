@@ -1,0 +1,28 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(admin, "Администратор")
+Person(moderator, "Модератор")
+Person(user, "Пользователь")
+
+System_Boundary(services_site, "Сайт заказа услуг") {
+  Container(web_app, "Веб-приложение", "Java, Spring MVC", "Предоставляет пользовательский интерфейс для взаимодействия с сервисами")
+  Container(user_service, "Сервис пользователей", "Java, Spring Boot", "Управляет информацией о пользователях")
+  Container(service_service, "Сервис услуг", "Java, Spring Boot", "Управляет информацией об услугах")
+  Container(order_service, "Сервис заказов", "Java, Spring Boot", "Управляет информацией о заказах")
+  Container(db, "База данных", "PostgreSQL", "Хранение данных о пользователях, услугах и заказах")
+}
+
+Rel(admin, web_app, "Использует")
+Rel(moderator, web_app, "Использует")
+Rel(user, web_app, "Использует")
+
+Rel(web_app, user_service, "Использует API")
+Rel(web_app, service_service, "Использует API")
+Rel(web_app, order_service, "Использует API")
+
+Rel(user_service, db, "Использует")
+Rel(service_service, db, "Использует")
+Rel(order_service, db, "Использует")
+
+@enduml

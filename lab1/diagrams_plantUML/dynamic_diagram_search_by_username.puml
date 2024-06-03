@@ -1,0 +1,13 @@
+@startuml
+actor User
+boundary WebApp as WA
+control UserService as US
+entity Database as DB
+
+User -> WA : Search User by Login
+WA -> US : Find User by Login
+US -> DB : Query User by Login
+DB -> US : Return User Data
+US -> WA : Return User Data
+WA -> User : Display User Data
+@enduml

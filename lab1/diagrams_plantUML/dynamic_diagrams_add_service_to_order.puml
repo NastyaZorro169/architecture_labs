@@ -1,0 +1,13 @@
+@startuml
+actor User
+boundary WebApp as WA
+control OrderService as OS
+entity Database as DB
+
+User -> WA : Add Services to Order
+WA -> OS : Add Services to Order
+OS -> DB : Insert Order Details
+DB -> OS : Order Updated
+OS -> WA : Order Updated
+WA -> User : Order Updated
+@enduml

@@ -1,0 +1,13 @@
+@startuml
+actor Admin
+boundary WebApp as WA
+control ServiceService as SS
+entity Database as DB
+
+Admin -> WA : Create Service
+WA -> SS : Add New Service
+SS -> DB : Insert Service Record
+DB -> SS : Service Created
+SS -> WA : Service Created
+WA -> Admin : Service Created
+@enduml
